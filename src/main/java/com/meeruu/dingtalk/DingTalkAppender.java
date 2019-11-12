@@ -129,12 +129,12 @@ public class DingTalkAppender extends UnsynchronizedAppenderBase<LoggingEvent> {
     this.env = env;
   }
 
-  public static void main(String[] args) {
-      DingTalkAppender logDing = new DingTalkAppender();
-    try {
-      logDing.toDingDing("https://oapi.dingtalk.com/robot/send?access_token=8c184310c00e13a0b24b542e66e0b8580954dbf12523dc0d9d5a92e964c53e91", "测试验证钉钉推送消息");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+//  public static void main(String[] args) {
+//      DingTalkAppender logDing = new DingTalkAppender();
+//    try {
+//      logDing.toDingDing("https://oapi.dingtalk.com/robot/send?access_token=8c184310c00e13a0b24b542e66e0b8580954dbf12523dc0d9d5a92e964c53e91", "测试验证钉钉推送消息");
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
+//  }
 }
