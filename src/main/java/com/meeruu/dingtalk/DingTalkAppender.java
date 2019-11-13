@@ -5,8 +5,11 @@ import ch.qos.logback.classic.PatternLayout;
 import ch.qos.logback.classic.spi.LoggingEvent;
 import ch.qos.logback.core.UnsynchronizedAppenderBase;
 import com.alibaba.fastjson.JSON;
+import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -52,7 +55,7 @@ public class DingTalkAppender extends UnsynchronizedAppenderBase<LoggingEvent> {
 
       StringBuilder sb = new StringBuilder();
         String textCache = sb.append("【" + appName + "】")
-                             .append("【" + getInetAddress().getHostAddress() + "】")
+                             .append("【" + getIpAddress() + "】")
                              .append("【" + env + "】").append("\n")
                              .append(contentMsg).toString();
 
@@ -69,6 +72,30 @@ public class DingTalkAppender extends UnsynchronizedAppenderBase<LoggingEvent> {
       }
     }
 
+    public static String getIpAddress() {
+      try {
+        Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+        InetAddress ip = null;
+        while (allNetInterfaces.hasMoreElements()) {
+          NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+          if (netInterface.isLoopback() || netInterface.isVirtual() || !netInterface.isUp()) {
+            continue;
+          } else {
+            Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
+            while (addresses.hasMoreElements()) {
+              ip = addresses.nextElement();
+              if (ip != null && ip instanceof Inet4Address) {
+                return ip.getHostAddress();
+              }
+            }
+          }
+        }
+      } catch (Exception e) {
+        System.err.println("IP地址获取失败" + e.toString());
+      }
+      return "";
+    }
+
     private InetAddress getInetAddress(){
       try {
         InetAddress inetAddress = InetAddress.getLocalHost();
@@ -79,7 +106,6 @@ public class DingTalkAppender extends UnsynchronizedAppenderBase<LoggingEvent> {
       }
       return null;
     }
-
 
     public String getProfilesActive() {
       return profilesActive;
