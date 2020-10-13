@@ -27,7 +27,7 @@
     <commons.lang3.version>3.8</commons.lang3.version>
     <lombok.version>1.18.2</lombok.version>
 
-    <junit.version>4.11</junit.version>
+    <junit.version>4.13.1</junit.version>
     <guava.version>23.0</guava.version>
     <httpclient.version>4.3.1</httpclient.version>
     <httpcore.version>4.3.3</httpcore.version>
