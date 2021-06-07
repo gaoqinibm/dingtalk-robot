@@ -34,7 +34,7 @@
     <fastjson.version>1.2.61</fastjson.version>
     <spring-context.version>5.0.8.RELEASE</spring-context.version>
     <logback-core.version>1.2.3</logback-core.version>
-    <logback-classic.version>1.0.13</logback-classic.version>
+    <logback-classic.version>1.2.0</logback-classic.version>
 
   </properties>
 
