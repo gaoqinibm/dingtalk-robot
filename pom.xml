@@ -31,7 +31,7 @@
     <guava.version>23.0</guava.version>
     <httpclient.version>4.3.1</httpclient.version>
     <httpcore.version>4.3.3</httpcore.version>
-    <fastjson.version>1.2.61</fastjson.version>
+    <fastjson.version>1.2.83</fastjson.version>
     <spring-context.version>5.0.8.RELEASE</spring-context.version>
     <logback-core.version>1.2.3</logback-core.version>
     <logback-classic.version>1.0.13</logback-classic.version>
